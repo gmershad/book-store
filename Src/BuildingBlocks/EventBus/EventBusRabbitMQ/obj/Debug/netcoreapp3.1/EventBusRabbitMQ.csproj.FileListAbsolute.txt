@@ -1,0 +1,12 @@
+D:\Books\Microservices\Practice\BookStore\Src\BuildingBlocks\EventBus\EventBusRabbitMQ\bin\Debug\netcoreapp3.1\EventBusRabbitMQ.deps.json
+D:\Books\Microservices\Practice\BookStore\Src\BuildingBlocks\EventBus\EventBusRabbitMQ\bin\Debug\netcoreapp3.1\EventBusRabbitMQ.dll
+D:\Books\Microservices\Practice\BookStore\Src\BuildingBlocks\EventBus\EventBusRabbitMQ\bin\Debug\netcoreapp3.1\EventBusRabbitMQ.pdb
+D:\Books\Microservices\Practice\BookStore\Src\BuildingBlocks\EventBus\EventBusRabbitMQ\bin\Debug\netcoreapp3.1\EventBus.dll
+D:\Books\Microservices\Practice\BookStore\Src\BuildingBlocks\EventBus\EventBusRabbitMQ\bin\Debug\netcoreapp3.1\EventBus.pdb
+D:\Books\Microservices\Practice\BookStore\Src\BuildingBlocks\EventBus\EventBusRabbitMQ\obj\Debug\netcoreapp3.1\EventBusRabbitMQ.csprojAssemblyReference.cache
+D:\Books\Microservices\Practice\BookStore\Src\BuildingBlocks\EventBus\EventBusRabbitMQ\obj\Debug\netcoreapp3.1\EventBusRabbitMQ.AssemblyInfoInputs.cache
+D:\Books\Microservices\Practice\BookStore\Src\BuildingBlocks\EventBus\EventBusRabbitMQ\obj\Debug\netcoreapp3.1\EventBusRabbitMQ.AssemblyInfo.cs
+D:\Books\Microservices\Practice\BookStore\Src\BuildingBlocks\EventBus\EventBusRabbitMQ\obj\Debug\netcoreapp3.1\EventBusRabbitMQ.csproj.CopyComplete
+D:\Books\Microservices\Practice\BookStore\Src\BuildingBlocks\EventBus\EventBusRabbitMQ\obj\Debug\netcoreapp3.1\EventBusRabbitMQ.dll
+D:\Books\Microservices\Practice\BookStore\Src\BuildingBlocks\EventBus\EventBusRabbitMQ\obj\Debug\netcoreapp3.1\EventBusRabbitMQ.pdb
+D:\Books\Microservices\Practice\BookStore\Src\BuildingBlocks\EventBus\EventBusRabbitMQ\obj\Debug\netcoreapp3.1\EventBusRabbitMQ.csproj.CoreCompileInputs.cache
