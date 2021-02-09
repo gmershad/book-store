@@ -34,7 +34,7 @@ namespace Catalog.API.Controllers
             return CreatedAtAction(nameof(SellerByIdAsync), new { id = seller.Id }, seller);
         }
 
-        [Route("{id:int}")]
+        [Route("id/{id:int}")]
         [HttpGet]
         [ActionName(nameof(SellerByIdAsync))]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
@@ -86,7 +86,7 @@ namespace Catalog.API.Controllers
         }
 
         [HttpGet]
-        [Route("{name:minlength(1)}")]
+        [Route("name/{name:minlength(1)}")]
         [ProducesResponseType(typeof(PaginatedItemsViewModel<Seller>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<PaginatedItemsViewModel<Seller>>> SellersWithNameAsync(string name, 
             [FromQuery] int pageSize = 10, [FromQuery] int pageIndex = 10)
