@@ -1,9 +1,0 @@
-D:\Books\Microservices\Practice\BookStore\Src\BuildingBlocks\EventBus\EventBus\bin\Debug\netcoreapp3.1\EventBus.deps.json
-D:\Books\Microservices\Practice\BookStore\Src\BuildingBlocks\EventBus\EventBus\bin\Debug\netcoreapp3.1\EventBus.dll
-D:\Books\Microservices\Practice\BookStore\Src\BuildingBlocks\EventBus\EventBus\obj\Debug\netcoreapp3.1\EventBus.AssemblyInfoInputs.cache
-D:\Books\Microservices\Practice\BookStore\Src\BuildingBlocks\EventBus\EventBus\obj\Debug\netcoreapp3.1\EventBus.AssemblyInfo.cs
-D:\Books\Microservices\Practice\BookStore\Src\BuildingBlocks\EventBus\EventBus\bin\Debug\netcoreapp3.1\EventBus.pdb
-D:\Books\Microservices\Practice\BookStore\Src\BuildingBlocks\EventBus\EventBus\obj\Debug\netcoreapp3.1\EventBus.dll
-D:\Books\Microservices\Practice\BookStore\Src\BuildingBlocks\EventBus\EventBus\obj\Debug\netcoreapp3.1\EventBus.pdb
-D:\Books\Microservices\Practice\BookStore\Src\BuildingBlocks\EventBus\EventBus\obj\Debug\netcoreapp3.1\EventBus.csprojAssemblyReference.cache
-D:\Books\Microservices\Practice\BookStore\Src\BuildingBlocks\EventBus\EventBus\obj\Debug\netcoreapp3.1\EventBus.csproj.CoreCompileInputs.cache
