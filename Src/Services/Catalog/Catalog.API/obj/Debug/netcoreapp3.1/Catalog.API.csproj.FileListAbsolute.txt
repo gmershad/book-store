@@ -128,3 +128,4 @@ D:\Books\Microservices\Practice\BookStore\Src\Services\Catalog\Catalog.API\obj\D
 D:\Books\Microservices\Practice\BookStore\Src\Services\Catalog\Catalog.API\obj\Debug\netcoreapp3.1\Catalog.API.csproj.CopyComplete
 D:\Books\Microservices\Practice\BookStore\Src\Services\Catalog\Catalog.API\obj\Debug\netcoreapp3.1\Catalog.API.dll
 D:\Books\Microservices\Practice\BookStore\Src\Services\Catalog\Catalog.API\obj\Debug\netcoreapp3.1\Catalog.API.pdb
+D:\Books\Microservices\Practice\BookStore\Src\Services\Catalog\Catalog.API\obj\Debug\netcoreapp3.1\Catalog.API.csprojAssemblyReference.cache
