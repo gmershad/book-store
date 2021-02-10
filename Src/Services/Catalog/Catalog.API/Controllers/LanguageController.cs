@@ -117,5 +117,4 @@ namespace Catalog.API.Controllers
             return NoContent();
         }
     }
-
 }
