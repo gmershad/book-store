@@ -11,6 +11,7 @@ using Catalog.API.IntegrationEvents;
 using EventBus;
 using EventBus.Abstractions;
 using EventBusRabbitMQ;
+using IntegrationEventLog;
 using IntegrationEventLog.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -45,6 +46,7 @@ namespace Catalog.API
                 .AddIntegrationServices(Configuration)
                 .AddEventBus(Configuration)
                 .AddSwagger(Configuration);
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -119,9 +121,17 @@ namespace Catalog.API
 
         public static IServiceCollection AddCustomDbContext(this IServiceCollection services, IConfiguration configuration)
         {
-            var connectionString = configuration["ConnectionString"];
             services.AddEntityFrameworkNpgsql().AddDbContext<CatalogContext>(options => {
-                options.UseNpgsql(connectionString,
+                options.UseNpgsql(configuration["ConnectionString"],
+                      npgsqlOptionsAction: sqlOptions =>
+                      {
+                          sqlOptions.MigrationsAssembly(typeof(Startup).GetTypeInfo().Assembly.GetName().Name);
+                          sqlOptions.EnableRetryOnFailure(maxRetryCount: 15, maxRetryDelay: TimeSpan.FromSeconds(30), errorCodesToAdd: null);
+                      });
+            });
+
+            services.AddEntityFrameworkNpgsql().AddDbContext<IntegrationEventLogContext>(options => {
+                options.UseNpgsql(configuration["ConnectionString"],
                       npgsqlOptionsAction: sqlOptions =>
                       {
                           sqlOptions.MigrationsAssembly(typeof(Startup).GetTypeInfo().Assembly.GetName().Name);
@@ -176,7 +186,7 @@ namespace Catalog.API
             var subscriptionClientName = configuration["SubscriptionClientName"];
             services.AddSingleton<IEventBus, EventBusRabbitMQ.EventBusRabbitMQ>(sp =>
             {
-                var rabbitMQPersistentConnection = sp.GetRequiredService<RabbitMQConnection>();
+                var rabbitMQPersistentConnection = sp.GetRequiredService<IRabbitMQConnection>();
                 var iLifetimeScope = sp.GetRequiredService<ILifetimeScope>();
                 var logger = sp.GetRequiredService<ILogger<EventBusRabbitMQ.EventBusRabbitMQ>>();
                 var eventBusSubcriptionsManager = sp.GetRequiredService<IEventBusSubscriptionsManager>();

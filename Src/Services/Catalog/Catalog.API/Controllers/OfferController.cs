@@ -4,6 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Catalog.API.Infrastructure;
+using Catalog.API.IntegrationEvents;
+using Catalog.API.Migrations.Events;
 using Catalog.API.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -16,10 +18,12 @@ namespace Catalog.API.Controllers
     public class OfferController : ControllerBase
     {
         private readonly CatalogContext _catalogContext;
+        private readonly ICatalogIntegrationEventService _catalogIntegrationEventService;
 
-        public OfferController(CatalogContext context)
+        public OfferController(CatalogContext context, ICatalogIntegrationEventService catalogIntegrationEventService)
         {
             _catalogContext = context ?? throw new ArgumentNullException(nameof(context));
+            _catalogIntegrationEventService = catalogIntegrationEventService ?? throw new ArgumentNullException(nameof(catalogIntegrationEventService));
             context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
         }
 
@@ -89,9 +93,23 @@ namespace Catalog.API.Controllers
                 return NotFound(new { Messsage = $"Items with id {offerToUpdate.Id} not found." });
             }
 
+            var oldOfferPercent = offerItem.PercentOffer;
+            var raiseOfferPercentChangedEvent = oldOfferPercent != offerToUpdate.PercentOffer;
+
             offerItem = offerToUpdate;
             _catalogContext.Offers.Update(offerItem);
-            await _catalogContext.SaveChangesAsync();
+
+            if (raiseOfferPercentChangedEvent)
+            {
+                var offerPercentChangeEvent = new OfferPercentChangedIntegrationEvent(offerItem.Id, offerToUpdate.PercentOffer, oldOfferPercent);
+                await _catalogIntegrationEventService.SaveEventAndCatalogContextChangesAsync(offerPercentChangeEvent);
+                await _catalogIntegrationEventService.PublishThroughEventBusAsync(offerPercentChangeEvent);
+            }
+            else
+            {
+                await _catalogContext.SaveChangesAsync();
+            }
+            
             return CreatedAtAction(nameof(OfferByIdAsync), new { id = offerToUpdate.Id }, null);
         }
 
