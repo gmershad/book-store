@@ -20,7 +20,7 @@ namespace Catalog.API.Infrastructure
 
         public DbSet<BookFormat> BookFormats { get; set; }
 
-        public DbSet<Genres> BookTypes { get; set; }
+        public DbSet<Genres> BookGenres { get; set; }
 
         public DbSet<Language> Languages { get; set; }
 
