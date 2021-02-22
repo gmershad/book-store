@@ -59,7 +59,7 @@ namespace Catalog.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> SellersAsync([FromQuery] int pageSize = 10, [FromQuery] int pageIndex = 10, string ids = null)
+        public async Task<IActionResult> SellersAsync([FromQuery] int pageSize = 10, [FromQuery] int pageIndex = 0, string ids = null)
         {
             if (!string.IsNullOrEmpty(ids))
             {
@@ -72,7 +72,7 @@ namespace Catalog.API.Controllers
                 return Ok(item);
             }
 
-            if(pageIndex <=0 || pageSize <= 0)
+            if(pageIndex <0 || pageSize < 0)
             {
                 return BadRequest("Invalid page index or page size");
             }

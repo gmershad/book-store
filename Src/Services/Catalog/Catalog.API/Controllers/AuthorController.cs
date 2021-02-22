@@ -63,7 +63,7 @@ namespace Catalog.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> AuthorsAsync([FromQuery] int pageSize = 10, [FromQuery] int pageIndex = 10, string ids = null)
+        public async Task<IActionResult> AuthorsAsync([FromQuery] int pageSize = 10, [FromQuery] int pageIndex = 0, string ids = null)
         {
             if (!string.IsNullOrEmpty(ids))
             {
@@ -94,7 +94,7 @@ namespace Catalog.API.Controllers
         [Route("name/{name:minlength(1)}")]
         [ProducesResponseType(typeof(PaginatedItemsViewModel<Author>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<PaginatedItemsViewModel<Author>>> AuthorsWithNameAsync(string name,
-            [FromQuery] int pageSize = 10, [FromQuery] int pageIndex = 10)
+            [FromQuery] int pageSize = 10, [FromQuery] int pageIndex = 0)
         {
             var totalItems = await _catalogContext.Authors.Where(c => c.Name.StartsWith(name)).LongCountAsync();
             if (totalItems == 0)
